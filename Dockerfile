@@ -3,9 +3,11 @@ FROM xenserver/xs-opam:latest_extra
 # probably due to installing out of date epel-release
 RUN sudo yum clean metadata \
     && sudo yum install -y epel-release \
+    && sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo \
     && sudo yum install -y \
         neovim \
         python34-pip \
+        ripgrep \
         stow \
         tig \
         zsh \
