@@ -8,7 +8,7 @@ Prerequisites:
 
 To start a development environment:
 ```
-sudo docker run --rm --detach-keys="ctrl-@" -v ~/.gitconfig:/home/opam/.gitconfig -itv "${PWD}:/local" -w /local edwintorok/xs-opam-dev
+sudo docker run --rm --cap-add=SYS_PTRACE --detach-keys="ctrl-@" -v ~/.gitconfig:/home/opam/.gitconfig -itv "${PWD}:/local" -w /local edwintorok/xs-opam-dev
 ```
 
 This contains tools configured as [described here](https://discuss.ocaml.org/t/whats-your-setup-for-ocaml-development/1784/27):
