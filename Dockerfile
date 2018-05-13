@@ -16,7 +16,7 @@ RUN sudo yum clean metadata \
 RUN git clone --recursive --depth 1 https://gitlab.com/edwintorok/dotfiles.git ~/dotfiles \
     && rm -rf ~/dotfiles/.git ~/dotfiles/emacs ~/dotfiles/fonts \
     && (cd ~/dotfiles && stow *) \
-    && nvim -c ':UpdateRemotePlugins' -c ':q'
+    && nvim -c ':UpdateRemotePlugins' -c ':helptags ALL' -c ':q'
 RUN opam remote add upstream https://opam.ocaml.org \
     && opam install -y ocp-indent merlin utop ocp-browser ocamlformat \
     && opam remote remove upstream \
