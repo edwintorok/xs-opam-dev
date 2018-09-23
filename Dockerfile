@@ -13,10 +13,9 @@ RUN sudo yum clean metadata \
         zsh \
     && sudo yum clean all \
     && pip3 install --no-cache-dir neovim typing --user
-RUN git clone --recursive --depth 1 https://gitlab.com/edwintorok/dotfiles.git ~/dotfiles \
+RUN git clone --depth 1 --recursive https://gitlab.com/edwintorok/dotfiles.git ~/dotfiles \
     && rm -rf ~/dotfiles/.git ~/dotfiles/emacs ~/dotfiles/fonts \
-    && (cd ~/dotfiles && stow *) \
-    && nvim -c ':UpdateRemotePlugins' -c ':helptags ALL' -c ':q'
+    && (cd ~/dotfiles && make install-nogui)
 RUN opam remote add upstream https://opam.ocaml.org \
     && opam install -y ocp-indent merlin utop ocp-browser ocamlformat \
     && opam remote remove upstream \
