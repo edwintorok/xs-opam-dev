@@ -4,7 +4,7 @@ set -eu
 
 # Which release of Fedora to use for the toolbox
 # (recommended to use the latest available)
-RELEASE=35
+RELEASE=34
 
 # A (minimal) development environment
 
@@ -31,7 +31,7 @@ declare -a packages=(
 # Customizable names
 
 REGISTRY="registry.fedoraproject.org"
-CONTAINER="fedora-toolbox-dev-${USER}"
+CONTAINER="fedora-toolbox-dev-${USER}-${RELEASE}"
 IMAGE="${REGISTRY}/fedora-toolbox:${RELEASE}"
 
 # Build a mutable persistent container
@@ -50,3 +50,4 @@ toolbox sudo dnf groupinstall -y "${groups[@]}"
 
 # TODO: NFS on /home doesn't work, move somewhere else and override HOME
 # TODO: what about symlinks to /var/tmp from $HOME? (e.g. my .cache...)
+.toolbox/toolbox --container "${CONTAINER}" -u --nostop echo "Container configured"
